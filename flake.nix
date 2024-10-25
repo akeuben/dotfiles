@@ -24,9 +24,6 @@
             url = "github:DreamMaoMao/hycov";
             inputs.hyprland.follows = "hyprland";
         };
-        muse-sounds-manager = {
-            url = "github:thilobillerbeck/muse-sounds-manager-nix";
-        };
         stylix.url = "github:danth/stylix";
         zls.url = "github:Kappabyte/zls";
   	};

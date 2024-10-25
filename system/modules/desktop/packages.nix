@@ -1,8 +1,5 @@
-{pkgs, inputs, ...}: 
-let 
-    muse-sounds-manager = inputs.muse-sounds-manager; 
-in {
-    environment.systemPackages = (with pkgs; [
+{pkgs, ...}: {
+    environment.systemPackages = with pkgs; [
         nautilus
         vesktop
         kitty
@@ -42,14 +39,13 @@ in {
         gnome-keyring
         xdg-utils
         musescore
+        muse-sounds-manager
 
         alsa-oss
         faudio
         zenity
 
         niri
-    ]) ++ [
-        muse-sounds-manager.packages.x86_64-linux.muse-sounds-manager
     ];
 
     fonts.packages = with pkgs; [
