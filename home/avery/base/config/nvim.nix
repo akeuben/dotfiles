@@ -85,23 +85,27 @@
             treesitter = {
                 enable = true;
             };
+            web-devicons.enable = true;
             lsp = {
                 enable = true;
                 servers = {
-                    java-language-server.enable = true;
+                    java_language_server.enable = true;
                     html.enable = true;
                     jsonls.enable = true;
                     nixd.enable = true;
                     bashls.enable = false;
-                    hls.enable = true;
+                    hls = {
+                        enable = true;
+                        installGhc = true;
+                    };
                     cssls.enable = true;
-                    rust-analyzer = {
+                    rust_analyzer = {
                         enable = true;
                         installRustc = true;
                         installCargo = true;
                     };
                     ccls.enable = true;
-                    tsserver.enable = true;
+                    ts_ls.enable = true;
                     zls = {
                         enable = true;
                         package = inputs.zls.packages.x86_64-linux.default;

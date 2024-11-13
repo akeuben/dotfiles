@@ -3,6 +3,7 @@
         nautilus
         vesktop
         kitty
+        gsettings-desktop-schemas
         
         mpv
         g4music

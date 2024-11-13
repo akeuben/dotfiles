@@ -28,14 +28,14 @@
         zls.url = "github:Kappabyte/zls";
   	};
 
-  	outputs = inputs @ { nixpkgs, home-manager, nixos-hardware, muse-sounds-manager, stylix, ... }:
+  	outputs = inputs @ { nixpkgs, home-manager, nixos-hardware, stylix, ... }:
 	let
 		user = "avery";
 	in {
 		nixosConfigurations = (
 			import ./system/host {
 				inherit (nixpkgs) lib;
-				inherit inputs nixpkgs user home-manager nixos-hardware muse-sounds-manager stylix;
+				inherit inputs nixpkgs user home-manager nixos-hardware stylix;
 			}
 		);
 	};
