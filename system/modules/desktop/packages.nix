@@ -13,7 +13,6 @@
         pavucontrol
         
         libreoffice-fresh       
-        calibre
         pinta
         tagger
         gimp
@@ -27,7 +26,6 @@
         hyprpicker
 
         papirus-folders
-        catppuccin-cursors.mochaLight
         adw-gtk3
 
         bluetuith
