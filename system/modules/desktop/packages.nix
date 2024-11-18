@@ -31,7 +31,6 @@
         adw-gtk3
 
         bluetuith
-        antimicrox
 
         swappy
         slurp

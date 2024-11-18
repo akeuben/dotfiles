@@ -99,5 +99,6 @@
             xorg.libXi
         ]; })
         pegasus-frontend
+        antimicrox
     ];
 }
