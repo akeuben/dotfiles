@@ -19,9 +19,6 @@
                 ignore_opacity = false;
                 new_optimizations = true;
             };
-            drop_shadow = true;
-            shadow_range = 0;
-            shadow_render_power = 0;
         };
         animations = {
             enabled = true;
