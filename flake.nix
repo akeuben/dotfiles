@@ -2,40 +2,39 @@
   	description = "My Personal NixOS System Flake Configuration";
 
   	inputs = {
-		nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-        nixpkgs-fixes.url = "github:NixOS/nixpkgs/91a7822b04fe5e15f1604f9ca0fb81eff61b4143";
+		nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
+		nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
 		home-manager = {
-			url = "github:nix-community/home-manager";
+			url = "github:nix-community/home-manager/release-24.11";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
 
         nixos-hardware = {
             url = "github:NixOS/nixos-hardware/master";
         };
+
         nixvim = {
             url = "github:nix-community/nixvim";
         };
-        ags.url = "github:Aylur/ags";
-
-        hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
 
         hycov={
             url = "github:DreamMaoMao/hycov";
-            inputs.hyprland.follows = "hyprland";
         };
         stylix.url = "github:danth/stylix";
-        zls.url = "github:Kappabyte/zls";
+        zls.url = "github:akeuben/zls";
+
+        shell.url = "github:akeuben/shell";
   	};
 
-  	outputs = inputs @ { nixpkgs, home-manager, nixos-hardware, stylix, ... }:
+  	outputs = inputs @ { nixpkgs, nixpkgs-unstable, home-manager, nixos-hardware, stylix, ... }:
 	let
 		user = "avery";
 	in {
 		nixosConfigurations = (
 			import ./system/host {
 				inherit (nixpkgs) lib;
-				inherit inputs nixpkgs user home-manager nixos-hardware stylix;
+				inherit inputs nixpkgs nixpkgs-unstable user home-manager nixos-hardware stylix;
 			}
 		);
 	};

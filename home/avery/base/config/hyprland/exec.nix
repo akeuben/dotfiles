@@ -1,7 +1,7 @@
-{ ... }: {
+{ inputs, ... }: {
     wayland.windowManager.hyprland.settings.exec-once = [
         "hyprpaper"
-        "ags"
+        "${inputs.shell.packages.x86_64-linux.default}/bin/kappashell"
         "keepassxc"
         "antimicrox --hidden"
         "ulauncher --no-window-shadow --hide-window"

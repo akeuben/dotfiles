@@ -1,13 +1,16 @@
 { pkgs, ... }: {
     stylix = {
         enable = true;    
-        base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
-        image = ../../../../home/avery/base/config/hyprpaper/wallpaper.png;
+        base16Scheme = "${pkgs.base16-schemes}/share/themes/everforest-dark-hard.yaml";
+        image = ../../../../home/avery/base/config/hyprpaper/wallpaper.jpg;
         polarity = "dark";
         cursor = {
             package = pkgs.vanilla-dmz;
             name = "Vanilla-DMZ";
             size = 32;
+        };
+        opacity = {
+            terminal = 0.85;
         };
         fonts = {
             emoji = {

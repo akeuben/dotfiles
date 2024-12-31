@@ -10,10 +10,10 @@
             layout = "dwindle";
         };
         decoration = {
-            rounding = 5;
+            rounding = 20;
             blur = {
                 enabled = true;
-                size = 5;
+                size = 3;
                 passes = 4;
                 xray = false;
                 ignore_opacity = false;
@@ -38,8 +38,8 @@
             preserve_split = true;
         };
         layerrule = [
-            "blur, ^ags:.*$"
-            "ignorezero, ^ags:.*$"
+            "blur, ^shell:"
+            "ignorezero, ^shell:"
         ];
         windowrulev2 = [
             "float,title:^Unlock Database - KeePassXC$"

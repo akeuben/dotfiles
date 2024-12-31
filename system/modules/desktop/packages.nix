@@ -52,6 +52,5 @@
         noto-fonts-emoji
         font-awesome
         font-awesome_5
-        (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
     ];
 }
