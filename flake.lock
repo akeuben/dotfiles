@@ -855,11 +855,11 @@
         "nixpkgs": "nixpkgs_4"
       },
       "locked": {
-        "lastModified": 1735524702,
-        "narHash": "sha256-VW/IP5CwKZPoEkfs09RiYHQHYPhgsYIDax3IaGoucPg=",
+        "lastModified": 1735629199,
+        "narHash": "sha256-ngiC8RtmQhQdkfMcic1zN3Ixr+exRhHSvnuqu7N+mT4=",
         "owner": "akeuben",
         "repo": "shell",
-        "rev": "0f9d12ae20160acc65b10eb126013ee688fc73fa",
+        "rev": "a72e08769cde754acf53e2d74a88c8056b5da41b",
         "type": "github"
       },
       "original": {
