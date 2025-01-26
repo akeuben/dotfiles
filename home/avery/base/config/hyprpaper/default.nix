@@ -1,11 +1,11 @@
 { ... }: {
     xdg.configFile."hypr/hyprpaper.conf".text = ''
-    preload = ~/.config/hypr/wallpaper.jpg
-    wallpaper = ,~/.config/hypr/wallpaper.jpg
+    preload = ~/.config/hypr/wallpaper.jpeg
+    wallpaper = ,~/.config/hypr/wallpaper.jpeg
     splash = true
     '';
 
-    xdg.configFile."hypr/wallpaper.jpg" = {
-        source = ./wallpaper.jpg;
+    xdg.configFile."hypr/wallpaper.jpeg" = {
+        source = ./wallpaper.jpeg;
     };
 }

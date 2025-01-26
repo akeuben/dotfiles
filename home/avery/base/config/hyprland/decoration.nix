@@ -55,5 +55,8 @@
         windowrule = [
             "noanim,ulauncher"
         ];
+        misc = {
+            disable_hyprland_logo = true;
+        };
     };
 }

@@ -2,7 +2,7 @@
     wayland.windowManager.hyprland = {
         settings = {
             monitor = [
-                "eDP-1,2736x1824,0x0,2,vrr,1"
+                "eDP-1,2736x1824,0x0,1.9,vrr,1"
                 ",preferred,auto,1"
             ];
             exec-once = [

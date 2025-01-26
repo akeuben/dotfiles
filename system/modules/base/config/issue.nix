@@ -55,6 +55,15 @@
             "Make it so, Number One."
             "Engage."
             "Tea. Earl Grey. Hot."
+            "Science compels us to explode the sun!"
+            "The past is past, now, but that’s… you know, that’s okay! It’s never really gone completely. The future is always built on the past, even if we won’t get to see it."
+            "It’s the kind of thing that makes you glad you stopped and smelled the pine trees along the way, you know?"
+            "We do not have much connection, you and I. Still, this encounter feels special. I hope you won't mind if I think of you as a friend."
+            "We only get so much time, don't we? Ah, there was still more I wanted to do... How unlucky to have been born at the end of the universe."
+            "The universe is, and we are."
+            "I believe we've reached the end of our journey. All that remains is to collapse the innumerable possibilities before us. Are you ready to learn what comes next?"
+            "The past is past, now, but that's... you know, that's okay! It's never really gone completely. The future is always built on the past, even if we won't get to see it."
+            "Come, sit with me, my fellow traveler. Let's sit and watch the stars die."
         ];
     };
 }

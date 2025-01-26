@@ -22,7 +22,7 @@
             url = "github:DreamMaoMao/hycov";
         };
         stylix.url = "github:danth/stylix";
-        zls.url = "github:akeuben/zls";
+        zls.url = "github:zigtools/zls";
 
         shell.url = "github:akeuben/shell";
   	};

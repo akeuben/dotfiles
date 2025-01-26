@@ -2,7 +2,7 @@
     stylix = {
         enable = true;    
         base16Scheme = "${pkgs.base16-schemes}/share/themes/everforest-dark-hard.yaml";
-        image = ../../../../home/avery/base/config/hyprpaper/wallpaper.jpg;
+        image = ../../../../home/avery/base/config/hyprpaper/wallpaper.png;
         polarity = "dark";
         cursor = {
             package = pkgs.vanilla-dmz;
