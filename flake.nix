@@ -24,6 +24,11 @@
         stylix.url = "github:danth/stylix";
         zls.url = "github:zigtools/zls";
 
+        ags = {
+            url = "github:aylur/ags";
+            inputs.nixpkgs.follows = "nixpkgs-unstable";
+        };
+
         shell.url = "github:akeuben/shell";
   	};
 

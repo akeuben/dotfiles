@@ -47,13 +47,11 @@
             "float,title:^(?!Steam$).*,class:steam"
             "fullscreen,class:gamescope"
             "workspace name:steam,class:gamescope"
-            "monitor DP-2,class:gamescope"
+            "monitor DP-1,class:gamescope"
             "fullscreen,initialTitle:Steam Big Picture Mode"
             "workspace name:steam,initialTitle:Steam Big Picture Mode"
-            "monitor DP-2,initialTitle:Steam Big Picture Mode"
-        ];
-        windowrule = [
-            "noanim,ulauncher"
+            "monitor DP-1,initialTitle:Steam Big Picture Mode"
+            "suppressevent fullscreen maximize fullscreenoutput,class:gamescope"
         ];
         misc = {
             disable_hyprland_logo = true;

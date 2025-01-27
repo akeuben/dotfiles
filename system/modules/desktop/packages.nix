@@ -4,6 +4,7 @@
         vesktop
         kitty
         gsettings-desktop-schemas
+        wl-clipboard
         
         mpv
         g4music
@@ -17,8 +18,6 @@
         tagger
         gimp
         inkscape
-
-        ulauncher
 
         hyprpaper
         hyprlock
