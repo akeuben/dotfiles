@@ -898,11 +898,11 @@
         "nixpkgs": "nixpkgs_4"
       },
       "locked": {
-        "lastModified": 1736235709,
-        "narHash": "sha256-ajXoV51vb2qPfAqQ64wbkpZTHIWTOCJVrBMkEMdsbK8=",
+        "lastModified": 1738874442,
+        "narHash": "sha256-9Xyghh7bEdzkIqNnx5FJgVaBecAItj5GOU9WEWAj+m4=",
         "owner": "akeuben",
         "repo": "shell",
-        "rev": "fc15433e8450e4dc510d0f8c85cbc7b5f098364c",
+        "rev": "ae67c67416947b55c251dc89c3c32e9b9ab0192f",
         "type": "github"
       },
       "original": {

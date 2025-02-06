@@ -62,8 +62,14 @@ in{
         bind = ${mainMod}, mouse_down, workspace, e+1
         bind = ${mainMod}, mouse_up, workspace, e-1
 
-        bind = ,XF86MonBrightnessUp,exec,brightnessctl +5%
-        bind = ,XF86MonBrightnessDown,exec,brightnessctl 5%-
+        bind = ,XF86AudioMute,exec,${pkgs.swayosd}/bin/swayosd-client --output-volume mute-toggle
+        bind = ,XF86AudioRaiseVolume,exec,${pkgs.swayosd}/bin/swayosd-client --output-volume raise
+        bind = ,XF86AudioLowerVolume,exec,${pkgs.swayosd}/bin/swayosd-client --output-volume lower
+        bind = ,XF86MonBrightnessUp,exec,${pkgs.swayosd}/bin/swayosd-client --brightness raise
+        bind = ,XF86MonBrightnessDown,exec,${pkgs.swayosd}/bin/swayosd-client --brightness lower
+
+        bindr = CAPS,Caps_Lock,exec,${pkgs.swayosd}/bin/swayosd-client --caps-lock
+        bindr = MOD2,Num_Lock,exec,${pkgs.swayosd}/bin/swayosd-client --num-lock
 
         submap = gamescope
         bind = ${mainMod}, L, exec, /home/avery/.config/hypr/lock.sh

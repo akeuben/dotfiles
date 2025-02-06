@@ -40,6 +40,7 @@
         settings = {
             input = {
                 kb_layout = "us";
+                numlock_by_default = true;
                 follow_mouse = 2;
                 float_switch_override_focus = false;
                 natural_scroll = false;

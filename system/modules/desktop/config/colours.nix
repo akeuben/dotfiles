@@ -1,7 +1,7 @@
 { pkgs, ... }: {
     stylix = {
         enable = true;    
-        base16Scheme = "${pkgs.base16-schemes}/share/themes/everforest-dark-hard.yaml";
+        base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-material-dark-hard.yaml";
         image = ../../../../home/avery/base/config/hyprpaper/wallpaper.png;
         polarity = "dark";
         cursor = {
