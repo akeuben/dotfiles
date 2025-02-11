@@ -1,4 +1,4 @@
-{ lib, inputs, pkgs, user, home-manager, ... }: {
+{ ... }: {
     programs.ssh.enable = true;
     programs.ssh.matchBlocks = {
         "github.com" = {

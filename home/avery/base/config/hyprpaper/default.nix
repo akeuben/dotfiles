@@ -1,11 +1,7 @@
-{ ... }: {
+{ config, ... }: {
     xdg.configFile."hypr/hyprpaper.conf".text = ''
-    preload = ~/.config/hypr/wallpaper.jpeg
-    wallpaper = ,~/.config/hypr/wallpaper.jpeg
+    preload = ${config.stylix.image}
+    wallpaper = ,${config.stylix.image}
     splash = true
     '';
-
-    xdg.configFile."hypr/wallpaper.jpeg" = {
-        source = ./wallpaper.jpeg;
-    };
 }

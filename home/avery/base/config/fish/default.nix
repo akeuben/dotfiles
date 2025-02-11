@@ -1,4 +1,4 @@
-{ lib, inputs, pkgs, user, home-manager, ... }: {
+{ pkgs, ... }: {
     imports = [
         ./aliases.nix
         ./functions/nix.nix

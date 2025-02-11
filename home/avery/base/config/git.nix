@@ -1,4 +1,4 @@
-{ lib, inputs, pkgs, user, home-manager, ... }: {
+{ ... }: {
     programs.git = {
         enable = true;
         userName = "Avery Keuben";

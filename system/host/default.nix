@@ -22,7 +22,6 @@ in {
         };
         modules = [
             ./enterprise
-            stylix.nixosModules.stylix
             home-manager.nixosModules.home-manager {
                 home-manager.useGlobalPkgs = true;
                 home-manager.useUserPackages = true;
@@ -43,7 +42,6 @@ in {
         };
         modules = [
             ./defiant
-            stylix.nixosModules.stylix
             home-manager.nixosModules.home-manager {
                 home-manager.useGlobalPkgs = true;
                 home-manager.useUserPackages = true;
@@ -65,7 +63,6 @@ in {
         modules = [
             nixos-hardware.nixosModules.microsoft-surface-pro-intel
             ./voyager
-            stylix.nixosModules.stylix
             home-manager.nixosModules.home-manager {
                 home-manager.useGlobalPkgs = true;
                 home-manager.useUserPackages = true;
@@ -88,7 +85,6 @@ in {
         };
         modules = [
             ./discovery
-            stylix.nixosModules.stylix
             home-manager.nixosModules.home-manager {
                 home-manager.useGlobalPkgs = true;
                 home-manager.useUserPackages = true;

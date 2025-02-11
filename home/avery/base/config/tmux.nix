@@ -1,4 +1,4 @@
-{ lib, inputs, pkgs, user, home-manager, ... }: {
+{ ... }: {
     programs.tmux = {
         enable = true;
         mouse = true;
