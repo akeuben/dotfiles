@@ -21,7 +21,7 @@
         hycov={
             url = "github:DreamMaoMao/hycov";
         };
-        stylix.url = "github:danth/stylix";
+        stylix.url = "github:danth/stylix/release-24.11";
         zls.url = "github:zigtools/zls";
 
         ags = {

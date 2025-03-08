@@ -36,7 +36,6 @@
         gnome-keyring
         xdg-utils
         musescore
-        muse-sounds-manager
 
         alsa-oss
         faudio
@@ -46,7 +45,6 @@
     ];
 
     fonts.packages = with pkgs; [
-        helvetica-neue-lt-std
         noto-fonts
         noto-fonts-emoji
         font-awesome

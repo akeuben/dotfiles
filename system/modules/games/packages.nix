@@ -17,6 +17,7 @@
         dolphin-emu
         pkgs.retroarchFull
         steam-rom-manager
+        owmods-gui
 
         mangohud
         ryujinx
