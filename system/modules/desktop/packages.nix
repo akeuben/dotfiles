@@ -43,6 +43,8 @@
         zenity
 
         niri
+
+        (callPackage ./packages/zen-browser {}) 
     ];
 
     fonts.packages = with pkgs; [
