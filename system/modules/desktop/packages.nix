@@ -45,6 +45,8 @@
         niri
 
         (callPackage ./packages/zen-browser {}) 
+        (callPackage ./packages/android-messages {}) 
+        caprine-bin
     ];
 
     fonts.packages = with pkgs; [
