@@ -21,6 +21,8 @@ in{
         # Open Application Launcher
         bind = ${mainMod}, P, exec, ${inputs.ags.packages.${pkgs.system}.io}/bin/astal '{"type": "runner"}'
         bind = ${mainMod}, return, exec, kitty
+        bind = ${mainMod}, W, exec, zen-browser
+        bind = ${mainMod}, N, exec, nautilus
         bind = ${mainMod}, C, killactive
         bind = ${mainMod}, V, togglefloating
         bind = ${mainMod}, J, togglesplit, dwindle

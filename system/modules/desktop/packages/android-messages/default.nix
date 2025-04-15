@@ -1,11 +1,11 @@
 { appimageTools, makeDesktopItem, copyDesktopItems, fetchurl}:
 let
     pname = "android-messages";
-    version = "3.1.0";
+    version = "5.6.0";
     
     src = fetchurl {
-        url = "https://github.com/chrisknepper/android-messages-desktop/releases/download/v${version}/Android-Messages-${version}.AppImage";
-        hash = "sha256-UTp9hvNWJymBwX50in4G2iPI2P+sr719vL8jzMzQKqU=";
+        url = "https://github.com/OrangeDrangon/android-messages-desktop/releases/download/v${version}/Android-Messages-v${version}-linux-x86_64.AppImage";
+        hash = "sha256-o82pgqNkMUcWlTdIqqIGQM31W7TFpzcq0PyzpJpYzFI=";
     };
 in 
 appimageTools.wrapType2 rec {
