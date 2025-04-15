@@ -152,11 +152,6 @@
             harpoon = {
                 enable = true;
                 enableTelescope = true;
-                keymaps = {
-                    addFile = "<leader>a";
-                    navNext = "<leader>n";
-                    navPrev = "<leader>p";
-                };
             };
             neogit = {
                 enable = true;

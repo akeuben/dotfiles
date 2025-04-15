@@ -8,6 +8,7 @@
         
         mpv
         g4music
+        rhythmbox
         obs-studio
         amberol
         gthumb

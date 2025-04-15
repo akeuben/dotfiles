@@ -68,6 +68,11 @@
             "It's tempting to linger in this moment, while every possibility still exists. But unless they are collapsed by an observer, they will never be more than possibilities."
             "I believe we’ve reached the end of our journey. All that remains is to collapse the innumerable possibilities before us. Are you ready to learn what comes next?"
             "Every decision is made in darkness. Only by making a choice can we learn whether it was right or not."
+            "Does anyone need another rep on that, besides the trumpets?"
+            "In a completely non-offensive way, do a rain dance"
+            "Can someone let me down?"
+            "Did I just bully you?"
+            "Trumpets. Not to pick on you... but..."
         ];
     };
 }

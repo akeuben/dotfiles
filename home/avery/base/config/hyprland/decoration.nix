@@ -10,12 +10,12 @@
             layout = "dwindle";
         };
         decoration = {
-            rounding = 20;
+            rounding = 10;
             blur = {
                 enabled = true;
                 size = 3;
                 passes = 4;
-                xray = false;
+                xray = true;
                 ignore_opacity = false;
                 new_optimizations = true;
             };
@@ -31,6 +31,7 @@
                 "borderangle, 1, 8, default"
                 "fade, 1, 7, default"
                 "workspaces, 1, 6, default"
+                "layers, 1, 3, default, fade"
             ];
         };
         dwindle = {
@@ -40,6 +41,11 @@
         layerrule = [
             "blur, ^shell:"
             "ignorezero, ^shell:"
+            "xray 1, ^shell:"
+            "animation slidevert, ^shell:"
+            "order 2, ^shell:bar"
+            "order 5, ^shell:control_center"
+            "order 7, ^shell:calendar"
         ];
         windowrulev2 = [
             "float,title:^Unlock Database - KeePassXC$"

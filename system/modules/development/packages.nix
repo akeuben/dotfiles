@@ -6,6 +6,9 @@
         ardour
         yabridge
         sfizz
+        polyphone
+        decent-sampler
+        calf
 
         # Generic Programming
         vscode

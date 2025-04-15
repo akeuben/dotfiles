@@ -1,4 +1,3 @@
-<<<<<<< Updated upstream
 { pkgs, ... }: {
     stylix = {
         enable = true;    
@@ -38,9 +37,5 @@
             };
         };
         targets.fish.enable = false;
-        targets.hyprland.hyprpaper.enable = false;
     };
-=======
-{ ... }: {
->>>>>>> Stashed changes
 }
