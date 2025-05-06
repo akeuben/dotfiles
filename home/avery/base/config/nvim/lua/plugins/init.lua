@@ -1,0 +1,5 @@
+require "plugins.oil"
+require "plugins.telescope"
+require "plugins.treesitter"
+require "plugins.base16"
+require "plugins.blink"

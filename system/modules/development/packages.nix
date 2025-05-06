@@ -18,7 +18,6 @@
         cmake
         fastfetch
         onefetch
-        neovim
         tmux
         tmux-sessionizer
         wget

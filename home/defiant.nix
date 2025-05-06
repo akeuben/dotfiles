@@ -1,7 +1,7 @@
 { inputs, ... }: {
     avery = { 
         imports = [
-            inputs.nixvim.homeManagerModules.nixvim
+            inputs.nixCats.homeModule
             inputs.stylix.homeManagerModules.stylix
             ./avery/base
             ./avery/defiant

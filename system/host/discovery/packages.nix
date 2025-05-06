@@ -7,7 +7,6 @@
         firefox
         
         neofetch
-        neovim
         tmux
         wget
         git

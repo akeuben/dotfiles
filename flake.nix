@@ -14,9 +14,7 @@
             url = "github:NixOS/nixos-hardware/master";
         };
 
-        nixvim = {
-            url = "github:nix-community/nixvim";
-        };
+        nixCats.url = "github:BirdeeHub/nixCats-nvim";
 
         hycov={
             url = "github:DreamMaoMao/hycov";
