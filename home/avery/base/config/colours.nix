@@ -4,9 +4,9 @@
         image = ./hyprpaper/wallpaper.jpeg;
         iconTheme = {
             enable = true;
-            package = pkgs.kora-icon-theme;
-            dark = "kora";
-            light = "kora";
+            package = pkgs.fluent-icon-theme;
+            dark = "Fluent-dark";
+            light = "Fluent-dark";
         };
         base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-material-dark-hard.yaml";
         polarity = "dark";
@@ -24,7 +24,7 @@
                 name = "TwitterColorEmoji-SVGinOT";
             };
             monospace = {
-                package = with pkgs; (nerdfonts.override { fonts = [ "JetBrainsMono" ]; });
+                package = pkgs.nerd-fonts.jetbrains-mono;
                 name = "JetBrainsMono Nerd Font";
             };
             sansSerif = {

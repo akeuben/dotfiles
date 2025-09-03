@@ -1,6 +1,6 @@
 { pkgs, ... }: {
     properties = {
-        wayland-sessions.session-list = with pkgs; [ hyprland niri ];
+        wayland-sessions.session-list = [ pkgs.hyprland pkgs.niri ];
         xorg-sessions.session-list = with pkgs; [ i3 ];
     };
 }

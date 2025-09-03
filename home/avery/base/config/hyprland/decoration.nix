@@ -4,13 +4,13 @@
     wayland.windowManager.hyprland.settings = {
         general = {
             gaps_in = 5;
-            gaps_out = 20;
+            gaps_out = "15, 10, 15, 10";
             border_size = 2;
 
             layout = "dwindle";
         };
         decoration = {
-            rounding = 10;
+            rounding = 24;
             blur = {
                 enabled = true;
                 size = 3;
@@ -46,6 +46,7 @@
             "order 2, ^shell:bar"
             "order 5, ^shell:control_center"
             "order 7, ^shell:calendar"
+            "noanim, ^shell"
         ];
         windowrulev2 = [
             "float,title:^Unlock Database - KeePassXC$"

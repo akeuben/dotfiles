@@ -1,6 +1,9 @@
 { inputs, pkgs, ... }: let
     mainMod = "SUPER";
 in{
+    wayland.windowManager.hyprland.settings = {
+        misc.middle_click_paste = false;
+    };
     wayland.windowManager.hyprland.extraConfig = ''
         submap = reset
         bindm = ${mainMod}, mouse:272, movewindow
@@ -19,7 +22,7 @@ in{
         bind = ${mainMod} SHIFT, 0, movetoworkspace, 10
 
         # Open Application Launcher
-        bind = ${mainMod}, P, exec, ${inputs.ags.packages.${pkgs.system}.io}/bin/astal '{"type": "runner"}'
+        bind = ${mainMod}, P, exec, ${inputs.shell.packages.x86_64-linux.desktop}/bin/kappashell-desktop '{"type": "runner"}'
         bind = ${mainMod}, return, exec, kitty
         bind = ${mainMod}, W, exec, zen-browser
         bind = ${mainMod}, N, exec, nautilus

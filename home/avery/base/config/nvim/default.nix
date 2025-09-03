@@ -10,7 +10,7 @@ in {
 
         packageNames = ["mynvim"];
 
-        nixpkgs_version = inputs.nixpkgs-unstable;
+        nixpkgs_version = inputs.nixpkgs;
 
         luaPath = ./.;
 
@@ -27,6 +27,12 @@ in {
                 nix = with pkgs; [
                     nixd 
                     alejandra
+                ];
+                web = with pkgs; [
+                    typescript-language-server
+                ];
+                zig = with pkgs; [
+                    zls
                 ];
             };
             startupPlugins = {
@@ -53,6 +59,8 @@ in {
                     general = true;
                     lua = true;
                     nix = true;
+                    web = true;
+                    zig = true;
                 };
                 extra = {
                     nixdExtras = {

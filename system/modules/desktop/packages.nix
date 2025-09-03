@@ -1,12 +1,14 @@
-{pkgs, ...}: {
+{inputs, pkgs, ...}: {
     environment.systemPackages = with pkgs; [
         nautilus
         vesktop
+        discord
         kitty
         gsettings-desktop-schemas
         wl-clipboard
         
         mpv
+        spotify
         g4music
         rhythmbox
         obs-studio
@@ -14,7 +16,7 @@
         gthumb
         pavucontrol
         
-        libreoffice-fresh       
+        libreoffice-still
         pinta
         tagger
         gimp
@@ -37,6 +39,7 @@
         gnome-keyring
         xdg-utils
         musescore
+        ente-auth
 
         alsa-oss
         faudio
@@ -44,7 +47,6 @@
 
         niri
 
-        (callPackage ./packages/zen-browser {}) 
         (callPackage ./packages/android-messages {}) 
         caprine-bin
     ];

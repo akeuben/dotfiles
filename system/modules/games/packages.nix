@@ -1,5 +1,5 @@
-{pkgs, pkgs-unstable, ...}: {
-    environment.systemPackages = with pkgs-unstable; [
+{pkgs, ...}: {
+    environment.systemPackages = with pkgs; [
         (lutris.override {
             extraLibraries = pkgs: [
                 wineWowPackages.waylandFull
@@ -20,11 +20,15 @@
         owmods-gui
 
         mangohud
-        ryujinx
+        ryubing
         steamtinkerlaunch
         (prismlauncher.override {additionalLibs = [ 
             xorg.libXtst 
             xorg.libXi
+        ]; jdks = [
+            jdk21
+            jdk17 
+            temurin-jre-bin-8
         ]; })
         pegasus-frontend
         antimicrox

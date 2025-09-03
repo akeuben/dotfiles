@@ -1,7 +1,7 @@
-{pkgs-unstable, ...}: {
+{pkgs, ...}: {
     services.pipewire = {
         enable = true;
-        package = pkgs-unstable.pipewire;
+        package = pkgs.pipewire;
         alsa.enable = true;
         pulse.enable = true;
         jack.enable = true;

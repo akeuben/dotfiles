@@ -1,13 +1,8 @@
-{ inputs, nixpkgs, nixpkgs-unstable, user, home-manager, nixos-hardware, stylix, ... }:
+{ inputs, nixpkgs, user, home-manager, nixos-hardware, ... }:
 
 let
     system = "x86_64-linux";
     pkgs = import nixpkgs {
-        inherit system;
-        config.allowUnfree = true;
-    };
-
-    pkgs-unstable = import nixpkgs-unstable {
         inherit system;
         config.allowUnfree = true;
     };
@@ -17,7 +12,7 @@ in {
     enterprise = lib.nixosSystem {
         inherit system;
         specialArgs = {
-            inherit inputs pkgs-unstable user system;
+            inherit inputs user system;
             hostName = "enterprise";
         };
         modules = [
@@ -26,7 +21,7 @@ in {
                 home-manager.useGlobalPkgs = true;
                 home-manager.useUserPackages = true;
                 home-manager.users = (import ../../home/enterprise.nix {
-                    inherit lib inputs pkgs pkgs-unstable user home-manager;
+                    inherit lib inputs pkgs user home-manager;
                 });
                 home-manager.extraSpecialArgs = {
                     inherit inputs;
@@ -37,7 +32,7 @@ in {
     defiant = lib.nixosSystem {
         inherit system;
         specialArgs = {
-            inherit inputs pkgs-unstable user system;
+            inherit inputs user system;
             hostName = "defiant";
         };
         modules = [
@@ -46,7 +41,7 @@ in {
                 home-manager.useGlobalPkgs = true;
                 home-manager.useUserPackages = true;
                 home-manager.users = (import ../../home/defiant.nix {
-                    inherit lib inputs pkgs pkgs-unstable user home-manager;
+                    inherit lib inputs pkgs user home-manager;
                 });
                 home-manager.extraSpecialArgs = {
                     inherit inputs;
@@ -57,7 +52,7 @@ in {
     voyager = lib.nixosSystem {
         inherit system;
         specialArgs = {
-            inherit inputs pkgs-unstable user system;
+            inherit inputs user system;
             hostName = "voyager";
         };
         modules = [
@@ -67,7 +62,7 @@ in {
                 home-manager.useGlobalPkgs = true;
                 home-manager.useUserPackages = true;
                 home-manager.users = (import ../../home/voyager.nix {
-                    inherit lib inputs pkgs pkgs-unstable user home-manager;
+                    inherit lib inputs pkgs user home-manager;
                 });
                 home-manager.extraSpecialArgs = {
                     inherit inputs;
@@ -78,7 +73,7 @@ in {
     discovery = lib.nixosSystem {
         inherit system;
         specialArgs = {
-            inherit inputs pkgs-unstable user system;
+            inherit inputs user system;
             host = {
                 hostName = "discovery";
             };
@@ -89,7 +84,7 @@ in {
                 home-manager.useGlobalPkgs = true;
                 home-manager.useUserPackages = true;
                 home-manager.users = (import ../../home/enterprise.nix {
-                    inherit lib inputs pkgs pkgs-unstable user home-manager;
+                    inherit lib inputs pkgs user home-manager;
                 });
                 home-manager.extraSpecialArgs = {
                     inherit inputs;
