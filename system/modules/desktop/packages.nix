@@ -40,6 +40,7 @@
         gnome-keyring
         xdg-utils
         musescore
+        muse-sounds-manager
         ente-auth
 
         alsa-oss
