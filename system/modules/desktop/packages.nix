@@ -5,6 +5,7 @@
         discord
         kitty
         gsettings-desktop-schemas
+        bitwarden-desktop
         wl-clipboard
         
         mpv

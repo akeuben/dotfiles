@@ -30,6 +30,5 @@
         texstudio
         texlive.combined.scheme-full
         obsidian
-        renderdoc
     ];
 }
