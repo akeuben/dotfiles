@@ -23,6 +23,7 @@ in{
 
         # Open Application Launcher
         bind = ${mainMod}, P, exec, ${inputs.shell.packages.x86_64-linux.desktop}/bin/kappashell-desktop '{"type": "runner"}'
+        bind = ${mainMod} SHIFT, S, exec, ${inputs.shell.packages.x86_64-linux.desktop}/bin/kappashell-desktop '{"type": "screenshot"}'
         bind = ${mainMod}, return, exec, kitty
         bind = ${mainMod}, W, exec, zen-browser
         bind = ${mainMod}, N, exec, nautilus

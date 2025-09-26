@@ -32,7 +32,7 @@ in {
                     typescript-language-server
                 ];
                 zig = with pkgs; [
-                    zls
+                    zls_0_15
                 ];
             };
             startupPlugins = {
