@@ -1,9 +1,8 @@
-{ ... }: {
+{ config, ... }: {
     services.mpd = {
         enable = true;
-        musicDirectory = "~/music";
-        playlistDirectory = "~/.config/mpd/playlists";
-        dbFile = "~/.config/mpd/tag_cache";
+        playlistDirectory = "${config.home.homeDirectory}/.config/mpd/playlists";
+        dbFile = "${config.home.homeDirectory}/.config/mpd/tag_cache";
         network = {
             listenAddress = "127.0.0.1";
             port = 6600;
