@@ -10,7 +10,7 @@
         
         mpv
         spotify
-        g4music
+        gapless
         rhythmbox
         obs-studio
         amberol
@@ -55,7 +55,7 @@
 
     fonts.packages = with pkgs; [
         noto-fonts
-        noto-fonts-emoji
+        noto-fonts-color-emoji
         font-awesome
         font-awesome_5
     ];

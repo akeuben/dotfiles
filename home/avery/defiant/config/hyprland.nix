@@ -16,13 +16,6 @@
             bind = [
                 ",edge:u:d,hycov:toggleoverview"
             ];
-            plugin = {
-                touch_gestures = {
-                    sensitivity = 4.0;
-                    workspace_swipe_fingers = 3;
-                    long_press_delay = 400;
-                };
-            };
         };
     };
 

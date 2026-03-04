@@ -23,6 +23,8 @@
         zls.url = "github:zigtools/zls";
 
         shell.url = "github:akeuben/shell";
+
+        hytale.url = "github:akeuben/Hytale-Nix";
   	};
 
   	outputs = inputs @ { nixpkgs, home-manager, nixos-hardware, stylix, ... }:

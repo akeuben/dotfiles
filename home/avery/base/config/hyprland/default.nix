@@ -35,6 +35,7 @@
     wayland.windowManager.hyprland = {
         enable = true;
         package = pkgs.hyprland;
+        portalPackage = null;
         plugins = [
         ];
         settings = {
@@ -49,9 +50,11 @@
                     scroll_factor = 0.3;
                 };
             };
-            gestures = {
-                workspace_swipe = true;
-            };
+
+            gesture = [
+                "3, horizontal, workspace"
+                "4, horizontal, workspace"
+            ];
         };
     };
 }

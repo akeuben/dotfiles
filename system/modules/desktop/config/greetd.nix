@@ -6,7 +6,7 @@ in {
         enable = true;
         settings = {
             default_session = {
-                command = "${pkgs.greetd.tuigreet}/bin/tuigreet --issue --time --remember --remember-session --user-menu --sessions ${wayland-sessions} --xsessions ${xorg-sessions} --xsession-wrapper '${pkgs.xorg.xinit}/bin/startx /usr/bin/env'";
+                command = "${pkgs.tuigreet}/bin/tuigreet --issue --time --remember --remember-session --user-menu --sessions ${wayland-sessions} --xsessions ${xorg-sessions} --xsession-wrapper '${pkgs.xorg.xinit}/bin/startx /usr/bin/env'";
                 user = "greeter";
             };
         };

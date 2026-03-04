@@ -1,4 +1,4 @@
-{ config, lib, ... }: {
+{ config, lib, pkgs, ... }: {
     xdg = {
         enable = true;
         userDirs = {
@@ -17,8 +17,6 @@
         stateHome = "${config.home.homeDirectory}/.local/state";
         cacheHome = "${config.home.homeDirectory}/.cache";
     };
-
-    
 
     dconf.settings = {
         "org/cinnamon/desktop/applications/terminal" = {

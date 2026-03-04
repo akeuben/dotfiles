@@ -34,6 +34,9 @@ in {
                 zig = with pkgs; [
                     zls_0_15
                 ];
+                go = with pkgs; [
+                    gopls
+                ];
             };
             startupPlugins = {
                 general = with pkgs.vimPlugins; [
@@ -61,12 +64,13 @@ in {
                     nix = true;
                     web = true;
                     zig = true;
+                    go = true;
                 };
                 extra = {
                     nixdExtras = {
                         nixpkgs = ''import ${pkgs.path} {}'';
-                        nixos_options = ''(builtins.getFlake "path:${builtins.toString inputs.self.outPath}").nixosConfigurations.configname.options'';
-                        home_manager_options = ''(builtins.getFlake "path:${builtins.toString inputs.self.outPath}").homeConfigurations.configname.options'';
+                        nixos_options = ''(builtins.getFlake "path:${toString inputs.self.outPath}").nixosConfigurations.configname.options'';
+                        home_manager_options = ''(builtins.getFlake "path:${toString inputs.self.outPath}").homeConfigurations.configname.options'';
                     };
                     base16colors = pkgs.lib.filterAttrs (k: v:
                         builtins.match "base0[0-9A-F]" k != null

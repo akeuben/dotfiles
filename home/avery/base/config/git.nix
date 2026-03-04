@@ -1,9 +1,11 @@
 { ... }: {
     programs.git = {
         enable = true;
-        userName = "Avery Keuben";
-        userEmail = "avery1516@gmail.com";
-        extraConfig = {
+        settings = {
+            user = {
+                name = "Avery Keuben";
+                email = "avery1516@gmail.com";
+            };
             diff.tool = "vimdiff";
             push.autoSetupRemote = "true";
             init.defaultBranch = "main";

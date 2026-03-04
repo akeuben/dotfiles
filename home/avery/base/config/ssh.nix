@@ -1,6 +1,19 @@
 { ... }: {
     programs.ssh.enable = true;
+    programs.ssh.enableDefaultConfig = false;
     programs.ssh.matchBlocks = {
+        "*" = {
+              forwardAgent = false;
+              serverAliveInterval = 0;
+              serverAliveCountMax = 3;
+              compression = false;
+              addKeysToAgent = null;
+              hashKnownHosts = false;
+              userKnownHostsFile = "~/.ssh/known_hosts";
+              controlMaster = "no";
+              controlPath = "~/.ssh/master-%r@%n:%p";
+              controlPersist = null;
+        };
         "github.com" = {
             user="git";
             hostname="github.com";

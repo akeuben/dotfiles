@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{pkgs, inputs, ...}: {
+    nixpkgs.config.allowUnfree = true;
     environment.systemPackages = with pkgs; [
         (lutris.override {
             extraLibraries = pkgs: [
@@ -15,7 +16,7 @@
         _2ship2harkinian
         pkgs.shipwright
         dolphin-emu
-        pkgs.retroarchFull
+        pkgs.retroarch-full
         steam-rom-manager
         owmods-gui
 
@@ -32,5 +33,7 @@
         ]; })
         pegasus-frontend
         antimicrox
+    ] ++ [
+        inputs.hytale.packages.x86_64-linux.hytale-launcher
     ];
 }
