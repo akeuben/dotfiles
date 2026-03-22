@@ -39,26 +39,25 @@
             preserve_split = true;
         };
         layerrule = [
-            "blur, ^shell:"
-            "ignorezero, ^shell:"
-            "xray 1, ^shell:"
-            "animation slidevert, ^shell:"
-            "order 2, ^shell:bar"
-            "order 5, ^shell:control_center"
-            "order 7, ^shell:calendar"
-            "noanim, ^shell"
+            "blur on, match:namespace ^shell:"
+            "xray on, match:namespace ^shell:"
+            "animation slidevert, match:namespace ^shell:"
+            "order 2, match:namespace ^shell:bar"
+            "order 5, match:namespace ^shell:control_center"
+            "order 7, match:namespace ^shell:calendar"
+            "no_anim on, match:namespace ^shell"
         ];
-        windowrulev2 = [
-            "float,title:^Unlock Database - KeePassXC$"
-            "float,title:^(zoom)$"
-            "float,title:^(?!Steam$).*,class:steam"
-            "fullscreen,class:gamescope"
-            "workspace name:steam,class:gamescope"
-            "monitor DP-1,class:gamescope"
-            "fullscreen,initialTitle:Steam Big Picture Mode"
-            "workspace name:steam,initialTitle:Steam Big Picture Mode"
-            "monitor DP-1,initialTitle:Steam Big Picture Mode"
-            "suppressevent fullscreen maximize fullscreenoutput,class:gamescope"
+        windowrule = [
+            "match:title ^Unlock Database - KeePassXC,float on"
+            "match:title ^(zoom)$,float on"
+            "match:title ^(?!Steam$).*,match:class steam,float on"
+            "match:class gamescope,fullscreen on"
+            "match:class gamescope,workspace name:steam"
+            "match:class gamescope,monitor DP-1"
+            "match:initial_title Steam Big Picture Mode,fullscreen on"
+            "match:initial_title Steam Big Picture Mode,workspace name:steam"
+            "match:initial_title Steam Big Picture Mode,monitor DP-1"
+            "match:class gamescope,suppress_event fullscreen maximize fullscreenoutput"
         ];
         misc = {
             disable_hyprland_logo = true;

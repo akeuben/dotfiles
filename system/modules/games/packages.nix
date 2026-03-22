@@ -1,21 +1,11 @@
 {pkgs, inputs, ...}: {
     nixpkgs.config.allowUnfree = true;
     environment.systemPackages = with pkgs; [
-        (lutris.override {
-            extraLibraries = pkgs: [
-                wineWowPackages.waylandFull
-            ];
-            extraPkgs = pkgs: [
-                wineWowPackages.waylandFull
-                dxvk
-                vkd3d-proton
-            ];
-        })
         (callPackage ./packages/mcpelauncher {}) 
         cemu
         _2ship2harkinian
+        (callPackage ./packages/dolphin.nix {})
         pkgs.shipwright
-        dolphin-emu
         pkgs.retroarch-full
         steam-rom-manager
         owmods-gui

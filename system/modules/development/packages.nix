@@ -6,13 +6,11 @@
         ardour
         yabridge
         sfizz
-        polyphone
-        decent-sampler
         calf
 
         # Generic Programming
         vscode
-        jetbrains.idea-community
+        jetbrains.idea-oss
         eclipses.eclipse-java
         logisim
         cmake

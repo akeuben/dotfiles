@@ -8,7 +8,6 @@ in {
             "DP-2, 2560x1440@165, 2560x0, 1, bitdepth, 10"
         ];
         render.cm_fs_passthrough = true;
-        experimental.xx_color_management_v4 = true;
         debug.full_cm_proto = true;
     };
 }
