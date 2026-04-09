@@ -11,7 +11,7 @@ pkgs.writeShellScriptBin "dolphin-emu" ''
   mkfifo "$PIPE"
 
   # Launch Dolphin
-  "$DOLPHIN_BIN" "$@" > "$PIPE" 2>&1 &
+  "$DOLPHIN_BIN" -C Logger.Logs.IOS=True "$@" > "$PIPE" 2>&1 &
   DOLPHIN_PID=$!
 
   # Read output and monitor
