@@ -18,9 +18,6 @@
             input.touchdevice.output = "eDP-1";
             input.tablet.output = "eDP-1";
         };
-        plugins = with pkgs.hyprlandPlugins; [
-            hyprgrass
-        ];
     };
 
 }
