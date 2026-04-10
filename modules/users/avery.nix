@@ -1,0 +1,14 @@
+{ self, inputs, ...}: {
+    flake.nixosModules.userAvery = { pkgs, lib, ...}: {
+        users.users.avery = {
+            isNormalUser = true;
+            extraGroups = [
+                "wheel"
+                "networkmanager"
+                "adbusers"
+                "plugdev"
+                "dialout"
+            ];
+        };
+    };
+}
