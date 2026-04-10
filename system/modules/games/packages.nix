@@ -2,7 +2,6 @@
     nixpkgs.config.allowUnfree = true;
     environment.systemPackages = with pkgs; [
         (callPackage ./packages/mcpelauncher {}) 
-        cemu
         _2ship2harkinian
         (callPackage ./packages/dolphin.nix {})
         pkgs.shipwright
