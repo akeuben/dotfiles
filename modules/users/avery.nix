@@ -1,5 +1,5 @@
 { self, inputs, ...}: {
-    flake.nixosModules.userAvery = { pkgs, lib, ...}: {
+    flake.nixos-modules.user.avery = { pkgs, lib, ...}: {
         users.users.avery = {
             isNormalUser = true;
             extraGroups = [

@@ -1,10 +1,10 @@
 { self, inputs, ...}: {
-    flake.nixosModules.voyagerConfiguration = {pkgs, lib, ...}: {
-        imports = with self.nixosModules; [
+    flake.nixos-modules.hosts.voyager.configuration = {pkgs, lib, ...}: {
+        imports = with self.nixos-modules; [
+            user.avery
             voyagerHardware
             niri
-            userAvery
-            core
+            corepackages
             network
             nvim
             hello

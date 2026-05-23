@@ -1,5 +1,5 @@
 { self, inputs, ... }: {
-    flake.nixosModules.hyprland = { pkgs, lib, ... }: {
+    flake.nixos-modules.hyprland = { pkgs, lib, ... }: {
         programs.hyprland = {
             enable = true;
             package = self.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;

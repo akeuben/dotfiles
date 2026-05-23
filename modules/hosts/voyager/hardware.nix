@@ -1,5 +1,5 @@
 {self, inputs, ...}: {
-    flake.nixosModules.voyagerHardware = { config, lib, pkgs, modulesPath, ... }: {
+    flake.nixos-modules.voyager.hardware = { config, lib, pkgs, modulesPath, ... }: {
         imports = [ 
             (modulesPath + "/installer/scan/not-detected.nix")
         ];

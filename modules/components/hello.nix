@@ -1,5 +1,5 @@
 { self, inputs, ...}: {
-	flake.nixosModules.hello = { pkgs, lib, ... }: {
+	flake.nixos-modules.hello = { pkgs, lib, ... }: {
 		environment.systemPackages = [
 			self.packages.${pkgs.stdenv.hostPlatform.system}.hello
 		];
