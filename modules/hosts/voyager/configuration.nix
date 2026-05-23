@@ -2,12 +2,11 @@
     flake.nixos-modules.hosts.voyager.configuration = {pkgs, lib, ...}: {
         imports = with self.nixos-modules; [
             user.avery
-            voyagerHardware
-            niri
-            corepackages
-            network
-            nvim
-            hello
+            hosts.voyager.hardware 
+
+            features.core
+            features.desktop
+            features.development
         ];
 
         boot.loader.systemd-boot.enable = true;
