@@ -1,7 +1,8 @@
 {self, inputs, ...}: {
-    flake.nixos-modules.features.desktop = { config, lib, pkgs, modulesPath, ... }: {
-        imports = with self.nixos-modules; [
+    flake.nixosModules.feature-desktop = { config, lib, pkgs, modulesPath, ... }: {
+        imports = with self.nixosModules; [
             niri
+            hyprland
         ];
     };
 }

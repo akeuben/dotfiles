@@ -1,5 +1,5 @@
 { self, inputs, ...}: {
-	flake.nixos-modules.nvim = { pkgs, lib, ... }: {
+	flake.nixosModules.nvim = { pkgs, lib, ... }: {
 		environment.systemPackages = [
 			self.packages.${pkgs.stdenv.hostPlatform.system}.nvim
 		];

@@ -1,15 +1,15 @@
-{ self, inputs, ...}: {
-    flake.nixos-modules.hosts.voyager.configuration = {pkgs, lib, ...}: {
-        imports = with self.nixos-modules; [
-            user.avery
-            hosts.voyager.hardware 
+{ self, ...}: {
+    flake.nixosModules.host-voyager-configuration = {...}: {
+        imports = with self.nixosModules; [
+            user-avery
+            host-voyager-hardware 
 
-            features.core
-            features.desktop
-            features.development
+            feature-core
+            feature-desktop
+            feature-development
         ];
 
-        networking.hostName = "voyager"
+        networking.hostName = "voyager";
 
         boot.loader.systemd-boot.enable = true;
         boot.loader.efi.canTouchEfiVariables = true;

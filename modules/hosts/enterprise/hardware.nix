@@ -1,5 +1,5 @@
-{self, inputs, ...}: {
-    flake.nixos-modules.enterprise.hardware = { config, lib, pkgs, modulesPath, ... }: {
+{...}: {
+    flake.nixosModules.host-enterprise-hardware = { config, lib, modulesPath, ... }: {
         imports = [ 
             (modulesPath + "/installer/scan/not-detected.nix")
         ];

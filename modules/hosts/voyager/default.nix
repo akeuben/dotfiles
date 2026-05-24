@@ -1,7 +1,7 @@
 { self, inputs, ...}: {
-    flake.nixos-configurations.hosts.voyager = inputs.nixpkgs.lib.nixosSystem {
+    flake.nixosConfigurations.voyager = inputs.nixpkgs.lib.nixosSystem {
         modules = [
-            self.nixos-modules.hosts.voyager.configuration
+            self.nixosModules.host-voyager-configuration
         ];
     };
 }

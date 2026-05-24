@@ -1,7 +1,10 @@
 { self, inputs, ...}: {
-    flake.nixos-modules.user.avery = { pkgs, lib, ...}: {
+    flake.nixosModules.user-avery = { pkgs, lib, ...}: {
         users.users.avery = {
             isNormalUser = true;
+            createHome = true;
+            initialPassword = "changeme";
+            shell = pkgs.fish;
             extraGroups = [
                 "wheel"
                 "networkmanager"

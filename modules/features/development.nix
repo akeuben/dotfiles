@@ -1,6 +1,6 @@
 {self, inputs, ...}: {
-    flake.nixos-modules.features.development = { config, lib, pkgs, modulesPath, ... }: {
-        imports = with self.nixos-modules; [
+    flake.nixosModules.feature-development = { config, lib, pkgs, modulesPath, ... }: {
+        imports = with self.nixosModules; [
         ];
     };
 }

@@ -1,13 +1,13 @@
-{ self, inputs, ...}: {
-    flake.nixos-modules.hosts.enterprise.configuration = {pkgs, lib, ...}: {
-        imports = with self.nixos-modules; [
-            user.avery
-            hosts.enterprise.hardware 
+{ self, ...}: {
+    flake.nixosModules.host-enterprise-configuration = {...}: {
+        imports = with self.nixosModules; [
+            user-avery
+            host-enterprise-hardware 
 
-            features.core
-            features.desktop
-            features.development
-            features.gaming
+            feature-core
+            feature-desktop
+            feature-development
+            feature-gaming
         ];
 
         networking.hostName = "enterprise";

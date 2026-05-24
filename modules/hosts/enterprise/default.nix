@@ -1,7 +1,7 @@
 { self, inputs, ...}: {
-    flake.nixos-configurations.hosts.enterprise = inputs.nixpkgs.lib.nixosSystem {
+    flake.nixosConfigurations.enterprise = inputs.nixpkgs.lib.nixosSystem {
         modules = [
-            self.nixos-modules.hosts.enterprise.configuration
+            self.nixosModules.host-enterprise-configuration
         ];
     };
 }
