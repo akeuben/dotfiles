@@ -1,5 +1,8 @@
 { self, inputs, ... }: {
-    flake.nixosModules.hyprland = { pkgs, lib, ... }: {
+    flake.nixosModules.hypr = { pkgs, lib, ... }: {
+        environment.systemPackages = [
+            self.packages.${pkgs.stdenv.hostPlatform.system}.kappashell
+        ];
         programs.hyprland = {
             enable = true;
             package = self.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
@@ -13,7 +16,7 @@
 
             addFlag = [
                 "--config"
-                ./hyprland.conf
+                ./hypr/hyprland.conf
             ];
 
             prefixVar = [
@@ -21,13 +24,14 @@
                     "PATH"
                     ":"
                     "${lib.makeBinPath (with pkgs; [
-                        kitty 
+                        self'.packages.kitty
                         nautilus
                         firefox
+                        self'.packages.hyprpaper
+                        self'.packages.kappashell
                     ])}"
                 ]
             ];
-            
         };
     };
 }

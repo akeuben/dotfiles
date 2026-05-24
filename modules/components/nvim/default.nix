@@ -21,7 +21,11 @@
 			extraPackages = with pkgs; [
 				nixd
 				alejandra
+                ripgrep
 			];
+            drv.postBuild = ''
+                rm $out/share/applications/nvim.desktop
+            '';
 		};
 	};
 }

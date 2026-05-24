@@ -17,6 +17,9 @@ end
 status is-interactive; and begin
     alias cl 'command clear'
     alias clear 'command clear && fish_greeting'
+    alias v "nvim"
+    alias vi "nvim"
+    alias vim "nvim"
     
     fish_ssh_agent
 

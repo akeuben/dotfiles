@@ -2,7 +2,8 @@
     flake.nixosModules.feature-desktop = { config, lib, pkgs, modulesPath, ... }: {
         imports = with self.nixosModules; [
             niri
-            hyprland
+            hypr
+            kitty
         ];
     };
 }

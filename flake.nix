@@ -6,6 +6,10 @@
         import-tree.url = "github:vic/import-tree";
 
         wrapper-modules.url = "github:BirdeeHub/nix-wrapper-modules";
+        kappashell = {
+            url = "github:akeuben/shell/vala-rewrite";
+            inputs.nixpkgs.follows = "nixpkgs";
+        };
     };
 
     outputs = inputs: inputs.flake-parts.lib.mkFlake
