@@ -4,6 +4,7 @@
             niri
             hypr
             kitty
+            graphics
         ];
     };
 }

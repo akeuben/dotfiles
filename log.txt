@@ -1,0 +1,3 @@
+SpiRegistry daemon is running with well-known name - org.a11y.atspi.Registry
+(ddci_init                     ) Calling ldbus_start_sleep_watch_thread...
+unable to lock lockfile /run/user/1001/wayland-0.lock, maybe another compositor is running

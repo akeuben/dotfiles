@@ -8,6 +8,7 @@
             fish
             neofetch
             tmux
+            graphics
         ];
 
         system.stateVersion = "26.05";
