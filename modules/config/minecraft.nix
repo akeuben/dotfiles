@@ -9,7 +9,6 @@
                     ];
                     jdks = [
                         jdk25
-                        jdk23
                         jdk21
                         jdk17
                         jdk8

@@ -1,14 +1,13 @@
 {den, ...}: {
-    den.aspects.voyager = {
+    den.aspects.enterprise = {
         includes = with den.aspects; [
-            hardware.voyager
+            hardware.enterprise
 
             feature.core
             feature.desktop
             feature.development
             feature.productivity
-
-            voyager.surface
+            feature.gaming
         ];
     };
 }

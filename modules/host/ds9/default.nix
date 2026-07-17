@@ -1,18 +1,11 @@
-{
-  # host aspect
-  den.aspects.ds9 = {
-    # host NixOS configuration
-    nixos =
-      { pkgs, ... }:
-      {
-        environment.systemPackages = [ pkgs.hello ];
-      };
-
-    # host provides default home environment for its users
-    provides.to-users.homeManager =
-      { pkgs, ... }:
-      {
-        home.packages = [ pkgs.vim ];
-      };
-  };
+{den, ...}: {
+    den.aspects.ds9 = {
+        includes = with den.aspects; [
+            hardware.ds9
+            
+            feature.core
+            feature.htpc
+            feature.gaming
+        ];
+    };
 }

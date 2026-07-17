@@ -11,4 +11,10 @@
 
         flakepath = "/home/avery/code/projects/current/dotfiles";
     };
+
+    den.hosts.x86_64-linux.enterprise = {
+        users.avery = { };
+
+        flakepath = "/home/avery/code/projects/current/dotfiles";
+    };
 }

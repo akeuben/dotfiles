@@ -1,5 +1,5 @@
 { self, inputs, ... }: {
-    den.aspects.plasma-bigscreen = {
+    den.aspects.bigscreen = {
         nixos = { pkgs, ... }: let
             plasma-bigscreen-wrapped = self.packages.${pkgs.stdenv.hostPlatform.system}.plasma-bigscreen;
             plasma-bigscreen = pkgs.kdePackages.plasma-bigscreen;
