@@ -12,11 +12,10 @@
                 hyprpaper
                 firefox
                 kitty
-                inputs.shell.packages.${pkgs.stdenv.hostPlatform.system}.kappashell-desktop
             ];
         };
 
-        homeManager = {pkgs, lib, ...}: {
+        provides.to-users.homeManager = {lib, ...}: {
             wayland.windowManager.hyprland = {
                 enable = true;
                 configType = "lua";

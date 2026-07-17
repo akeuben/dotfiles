@@ -5,7 +5,6 @@
         nixos = {pkgs, ...}: {
             environment.systemPackages = with pkgs; [
                 godot
-                vim
 
                 blender
                 krita
@@ -21,7 +20,6 @@
 
                 cmake
                 wget 
-                git
                 gh
             ];
         };

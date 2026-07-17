@@ -1,7 +1,4 @@
-# DO-NOT-EDIT. This file was auto-generated using github:vic/flake-file.
-# Use `nix run .#write-flake` to regenerate it.
 {
-
     outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } (inputs.import-tree ./modules);
 
     inputs = {
@@ -29,6 +26,10 @@
             inputs.nixpkgs.follows = "nixpkgs";
             inputs.astal.inputs.nixpkgs.follows = "nixpkgs";
         };
-    };
 
+        stylix = {
+            url = "github:nix-community/stylix";
+            inputs.nixpkgs.follows = "nixpkgs";
+        };
+    };
 }

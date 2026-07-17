@@ -1,11 +1,13 @@
 { self, inputs, ... }: {
-    flake.nixosModules.tmux = { pkgs, lib, ... }: {
-        environment.systemPackages = [
-            self.packages.${pkgs.stdenv.system}.tmux
-        ];
+    den.aspects.tmux = {
+        nixos = { pkgs, ... }: {
+            environment.systemPackages = [
+                self.packages.${pkgs.stdenv.system}.tmux
+            ];
+        };
     };
 
-    perSystem = { pkgs, lib, self', ...}: {
+    perSystem = { pkgs, lib, ...}: {
         packages.tmux = inputs.wrapper-modules.lib.wrapPackage {
             inherit pkgs;
             package = pkgs.tmux;
@@ -24,7 +26,6 @@
                     ])}"
                 ]
             ];
-            
         };
     };
 }

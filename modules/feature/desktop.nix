@@ -8,7 +8,6 @@
             evolution
             kdeconnect
             pipewire
-            qt
             vesktop
         ];
 

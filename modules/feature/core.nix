@@ -5,7 +5,9 @@
             boot
             dbus
             dconf
+            nvim
             fish
+            git
             gnupg
             gvfs
             keyring
@@ -14,7 +16,9 @@
             nix
             plymouth
             ssh
+            stylix
             time
+            tmux
             graphics
             upower
         ];

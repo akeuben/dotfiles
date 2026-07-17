@@ -1,11 +1,11 @@
 { self, inputs, ...}: {
-	flake.nixosModules.nvim = { pkgs, lib, ... }: {
+	den.aspects.nvim = { pkgs, ... }: {
 		environment.systemPackages = [
 			self.packages.${pkgs.stdenv.hostPlatform.system}.nvim
 		];
 	};
 
-	perSystem = { pkgs, lib, self', ... }: {
+	perSystem = { pkgs, ... }: {
 		packages.nvim = inputs.wrapper-modules.wrappers.neovim.wrap {
 			inherit pkgs;
 			settings.config_directory = ./.;

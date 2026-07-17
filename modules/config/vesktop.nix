@@ -7,7 +7,7 @@
             ];
         };
 
-        homeManager = {
+        provides.to-users.homeManager = {
             programs.vesktop = {
                 enable = true;
             };

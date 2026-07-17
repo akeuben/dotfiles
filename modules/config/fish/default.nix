@@ -1,14 +1,20 @@
 {
     den.aspects.fish = {
-        homeManager = {pkgs, ...}: {
+        nixos = {pkgs, ...}: {
+            environment.systemPackages = with pkgs; [
+                grc
+                direnv
+            ];
+        };
+        provides.to-users.homeManager = {pkgs, ...}: {
             programs.fish = {
                 enable = true;
                 interactiveShellInit = ''
                     fish_ssh_agent
 
                     if not test -z $(tty | grep pts); and not set -q TMUX;
-                set -x TMUX_SHLVL $SHLVL
-                    exec tmux new -A -s avery
+                        set -x TMUX_SHLVL $SHLVL
+                        exec tmux new -A -s avery
                     end
                     '';
 
@@ -20,19 +26,19 @@
                     { name = "grc"; src = pkgs.fishPlugins.grc.src; }
                 ];
                 shellAliases = {
-                    "neofetch" = "fastfetch -s Title:Separator:OS:Host:Kernel:Uptime:Shell:Display:DE:WM:WMTheme:Theme:Icons:Terminal:CPU:GPU:Memory:Break:Battery:Colors --ds-force-drm";
+                    "neofetch" = "${pkgs.fastfetch}/bin/fastfetch -s Title:Separator:OS:Host:Kernel:Uptime:Shell:Display:DE:WM:WMTheme:Theme:Icons:Terminal:CPU:GPU:Memory:Break:Battery:Colors --ds-force-drm";
                     "clear" = "command clear && fish_greeting";
                     "cl" = "command clear";
                 };
                 functions = {
                     "fish_greeting" = {
                         body = ''
-                            set result (onefetch &| grep "Error: Could not find any source code in this repository") &>/dev/null
+                            set result (${pkgs.onefetch}/bin/onefetch &| grep "Error: Could not find any source code in this repository") &>/dev/null
 
                             command clear
 
                             if test -z "$result"; and git rev-parse --git-dir > /dev/null 2>&1;
-                                onefetch
+                                ${pkgs.onefetch}/bin/onefetch
                             else
                                 neofetch
                             end
