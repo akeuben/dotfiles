@@ -39,13 +39,18 @@
         "type": "github"
       }
     },
+<<<<<<< Updated upstream
     "home-manager": {
+=======
+    "hardware": {
+>>>>>>> Stashed changes
       "inputs": {
         "nixpkgs": [
           "nixpkgs"
         ]
       },
       "locked": {
+<<<<<<< Updated upstream
         "lastModified": 1784129366,
         "narHash": "sha256-N5JiyICSeQF14x+OQebNyPpYowOT9Rs1iKyeCylSzOA=",
         "owner": "nix-community",
@@ -56,6 +61,18 @@
       "original": {
         "owner": "nix-community",
         "repo": "home-manager",
+=======
+        "lastModified": 1781622756,
+        "narHash": "sha256-JrPh4M6S7aPsEE9tOENuZrxC6o2szSLlK+t4+nLke9s=",
+        "owner": "nixos",
+        "repo": "nixos-hardware",
+        "rev": "08018c72174a4df5657f8d94178ac69fb9c243e5",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "repo": "nixos-hardware",
+>>>>>>> Stashed changes
         "type": "github"
       }
     },
@@ -169,7 +186,11 @@
     "root": {
       "inputs": {
         "flake-parts": "flake-parts",
+<<<<<<< Updated upstream
         "home-manager": "home-manager",
+=======
+        "hardware": "hardware",
+>>>>>>> Stashed changes
         "import-tree": "import-tree",
         "kappashell": "kappashell",
         "nixpkgs": "nixpkgs",

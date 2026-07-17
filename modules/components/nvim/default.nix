@@ -18,7 +18,7 @@
 					nvim-lspconfig
 				];
 			};
-			extraPackages = with pkgs; [
+			runtimePkgs = with pkgs; [
 				nixd
 				alejandra
                 ripgrep

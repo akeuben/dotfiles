@@ -8,7 +8,7 @@
 
   perSystem = { pkgs, lib, self', ... }: {
     packages.myNiri = inputs.wrapper-modules.wrappers.niri.wrap {
-      inherit pkgs; # THIS PART IS VERY IMPORTAINT, I FORGOT IT IN THE VIDEO!!!
+      inherit pkgs;
       settings = {
         spawn-at-startup = [
         ];
@@ -22,7 +22,7 @@
         binds = {
           "Mod+Return".spawn-sh = lib.getExe pkgs.kitty;
           "Mod+F".spawn-sh = lib.getExe pkgs.firefox;
-          "Mod+Q".close-window = null;
+          "Mod+Q".close-window = _: {};
         };
       };
     };

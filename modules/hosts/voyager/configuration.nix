@@ -7,6 +7,8 @@
             feature-core
             feature-desktop
             feature-development
+
+            surface
         ];
 
         networking.hostName = "voyager";
