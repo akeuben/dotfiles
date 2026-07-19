@@ -3,7 +3,7 @@
         provides.to-users.homeManager = {user, lib, ...}: {
             programs.git = {
                 enable = true;
-                settings = lib.mkIf (user.realName != null && user.email != null) {
+                settings = lib.mkIf (user ? realName && user ? email) {
                     user.name = user.realName;
                     user.email = user.email;
                     push.autoSetupRemote = "true";

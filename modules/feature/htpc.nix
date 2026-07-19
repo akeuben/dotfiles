@@ -6,5 +6,11 @@
             plymouth
             pipewire
         ];
+
+	nixos = {pkgs, ...}: {
+	    environment.systemPackages = with pkgs; [
+		vacuum-tube
+	    ];
+	};
     };
 }
