@@ -27,6 +27,8 @@
             environment.systemPackages = with pkgs; [
                 git
                 wl-clipboard
+                jq
+                curl
             ];
         };
     };

@@ -1,4 +1,4 @@
-{den, ...}: {
+{den, self, ...}: {
     den.aspects.voyager = {
         includes = with den.aspects; [
             hardware.voyager
@@ -9,6 +9,8 @@
             feature.productivity
 
             voyager.surface
+
+            kodi
         ];
     };
 }
