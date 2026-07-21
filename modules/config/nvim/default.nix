@@ -1,8 +1,10 @@
 { self, inputs, ...}: {
-	den.aspects.nvim = { pkgs, ... }: {
-		environment.systemPackages = [
-			self.packages.${pkgs.stdenv.hostPlatform.system}.nvim
-		];
+	den.aspects.nvim = {
+		nixos = {pkgs, ...}: {
+			environment.systemPackages = [
+				self.packages.${pkgs.stdenv.hostPlatform.system}.nvim
+			];
+		};
 	};
 
 	perSystem = { pkgs, ... }: {
@@ -21,11 +23,8 @@
 			runtimePkgs = with pkgs; [
 				nixd
 				alejandra
-                ripgrep
+				ripgrep
 			];
-            drv.postBuild = ''
-                rm $out/share/applications/nvim.desktop
-            '';
 		};
 	};
 }

@@ -2,6 +2,8 @@ let
     avery = {
         realName = "Avery Keuben";
         email = "avery1516@gmail.com";
+        wallpaper = ../resources/wallpaper-avery.png;
+        polarity = "dark";
     };
 
     htpc = {

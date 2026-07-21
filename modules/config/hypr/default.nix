@@ -20,7 +20,23 @@
                 enable = true;
                 configType = "lua";
 
-                settings = let mod = "ALT"; in {
+                settings = let 
+                    mod = "SUPER";
+                    dsp0 = dsp: lib.generators.mkLuaInline "hl.dsp.${dsp}()";
+                    dsp1 = dsp: arg: lib.generators.mkLuaInline "hl.dsp.${dsp}(${arg})";
+                    exec_cmd = cmd: dsp1 "exec_cmd" "\"${cmd}\"";
+                    exit = dsp0 "exit";
+                    focus = ws: on_current: dsp1 "focus" "{workspace = ${toString ws}, on_current_monitor = ${toString on_current}}";
+                    window = {
+                        move = ws: follow: dsp1 "window.move" "{workspace = ${toString ws}, follow = ${toString follow}}";
+                        fullscreen = dsp1 "window.fullscreen" "{mode = \"fullscreen\"}";
+                        float = dsp1 "window.float" "{}";
+                        drag = dsp0 "window.drag";
+                        resize = dsp0 "window.resize";
+                        exit = dsp0 "window.close";
+                        kill = dsp0 "window.kill";
+                    };
+                in {
                     config = {
                         general = {
                             gaps_in = 5;
@@ -75,25 +91,55 @@
                             touchpad = {
                                 natural_scroll = true;
                                 scroll_factor = 0.3;
+                                disable_while_typing = true;
                             };
                         };
                     };
+                    gesture = [
+                        {_args = [
+                            (lib.generators.mkLuaInline "{fingers = 3, direction = \"horizontal\", action = \"workspace\"}")
+                        ];}
+                    ];
                     bind = [
                         { _args = [
-                            "${mod} + F" 
-                            (lib.generators.mkLuaInline "hl.dsp.exec_cmd(\"firefox\")")
+                            "${mod} + B"
+                            (exec_cmd "firefox")
                         ];}
                         { _args = [
                             "${mod} + Return" 
-                            (lib.generators.mkLuaInline "hl.dsp.exec_cmd(\"kitty\")")
+                            (exec_cmd "kitty")
+                        ];}
+                        { _args = [
+                            "${mod} + F" 
+                            window.fullscreen
+                        ];}
+                        { _args = [
+                            "${mod} + V" 
+                            window.float
                         ];}
                         { _args = [
                             "${mod} + P" 
-                            (lib.generators.mkLuaInline "hl.dsp.exec_cmd(\"kappashell-desktop popup open runner bottom\")")
+                            (exec_cmd "kappashell-desktop popup open runner bottom")
                         ];}
                         { _args = [
-                            "${mod} + Q" 
-                            (lib.generators.mkLuaInline "hl.dsp.exit()")
+                            "${mod} + C" 
+                            window.exit
+                        ];}
+                        { _args = [
+                            "${mod} + SHIFT + C" 
+                            window.kill
+                        ];}
+                        { _args = [
+                            "CTRL + ALT + Delete" 
+                            exit
+                        ];}
+                        { _args = [
+                            "${mod} + mouse:272"
+                            window.drag
+                        ];}
+                        { _args = [
+                            "${mod} + mouse:273"
+                            window.resize
                         ];}
                     ] ++ (
                         builtins.concatLists (builtins.genList (i: let 
@@ -101,7 +147,11 @@
                         in [
                             { _args = [
                                 "${mod} + ${toString i}" 
-                                (lib.generators.mkLuaInline "hl.dsp.focus({workspace = \"${toString ws}\", on_current_monitor = true})")
+                                (focus ws true)
+                            ];}
+                            { _args = [
+                                "${mod} + SHIFT + ${toString i}" 
+                                (window.move ws true)
                             ];}
                         ]) 9)
                     );

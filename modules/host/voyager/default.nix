@@ -10,6 +10,8 @@
 
             voyager.surface
 
+	    nvim
+
             kodi
         ];
     };
