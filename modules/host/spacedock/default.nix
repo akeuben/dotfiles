@@ -1,7 +1,7 @@
 {den, ...}: {
-    den.aspects.ds9 = {
+    den.aspects.spacedock = {
         includes = with den.aspects; [
-            hardware.ds9
+            hardware.spacedock
 
             feature.core
             feature.htpc
