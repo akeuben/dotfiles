@@ -5,7 +5,8 @@
 
             feature.core
             feature.htpc
-            feature.gaming
+            emulation
+            steam
         ];
     };
 }
