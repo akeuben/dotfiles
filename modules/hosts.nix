@@ -15,6 +15,12 @@ in {
         flakepath = "/home/avery/dotfiles?submodules=1";
     };
 
+    den.hosts.x86_64-linux.spacedock = {
+        users = { inherit avery htpc; };
+
+        flakepath = "/home/avery/dotfiles?submodules=1";
+    };
+
     den.hosts.x86_64-linux.voyager = {
         users = { inherit avery; };
 

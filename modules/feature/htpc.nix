@@ -5,12 +5,13 @@
             graphics
             plymouth
             pipewire
+            kodi
         ];
 
-	nixos = {pkgs, ...}: {
-	    environment.systemPackages = with pkgs; [
-		vacuum-tube
-	    ];
-	};
+        nixos = {pkgs, ...}: {
+            environment.systemPackages = with pkgs; [
+                vacuum-tube
+            ];
+        };
     };
 }

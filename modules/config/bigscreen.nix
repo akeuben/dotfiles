@@ -10,6 +10,10 @@
             services.displayManager = {
                 plasma-login-manager.enable = true;
                 defaultSession = "plasma-bigscreen-wayland";
+                autoLogin = {
+                    enable = true;
+                    user = "htpc";
+                };
                 sessionPackages = [ plasma-bigscreen-wrapped ];
             };
 

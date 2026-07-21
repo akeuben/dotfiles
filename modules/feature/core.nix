@@ -5,6 +5,7 @@
             boot
             dbus
             dconf
+            hostname
             nvim
             fish
             git
