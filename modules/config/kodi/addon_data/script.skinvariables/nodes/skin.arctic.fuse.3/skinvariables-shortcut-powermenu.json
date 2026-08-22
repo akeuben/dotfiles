@@ -1,0 +1,16 @@
+[
+    {
+        "icon": "special://skin/extras/icons/address-card.png",
+        "label": "$LOCALIZE[31359]",
+        "path": "System.LogOff",
+        "target": "",
+        "guid": "guid-473ed3d7"
+    },
+    {
+        "icon": "special://skin/extras/icons/power.png",
+        "label": "$LOCALIZE[13009]",
+        "path": "Quit()",
+        "target": "",
+        "guid": "guid-1337724f"
+    }
+]

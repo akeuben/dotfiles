@@ -1,0 +1,18 @@
+[
+    {
+        "label": "TV Shows",
+        "icon": "special://skin/extras/icons/tv.png",
+        "path": "DefaultSearch-TMDBShows",
+        "target": "videos",
+        "widget_style": "Poster",
+        "guid": "guid-b6dc17b8"
+    },
+    {
+        "label": "Movies",
+        "icon": "special://skin/extras/icons/film.png",
+        "path": "DefaultSearch-TMDBMovies",
+        "target": "videos",
+        "widget_style": "Poster",
+        "guid": "guid-d67a1b79"
+    }
+]

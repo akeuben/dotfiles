@@ -1,0 +1,247 @@
+#!/usr/bin/env bash
+#
+# updatepkgs
+#
+# Scans the current directory tree for `nixpkg.json` files describing a
+# GitHub source (a release archive, a release asset, or the bare repo at
+# the latest commit on a branch), resolves the latest version, prefetches
+# the appropriate hash, and writes a sibling `src` file that can be
+# `import`ed by a derivation.
+#
+# Expected nixpkg.json format:
+#
+#   Whole source as a zip (unpacked via fetchzip), pinned to the release tag:
+#     {
+#       "owner": "NixOS",
+#       "repo":  "nixpkgs",
+#       "type":  "zip"
+#     }
+#
+#   A single named asset attached to the release (fetched via fetchurl):
+#     {
+#       "owner":    "someuser",
+#       "repo":     "somerepo",
+#       "type":     "artifact",
+#       "artifact": "somerepo-linux-x86_64.tar.gz"
+#     }
+#
+#   The bare repository itself as a zip, independent of releases, pinned to
+#   the latest commit on a branch ("branch" optional, defaults to the
+#   repo's default branch):
+#     {
+#       "owner":  "someuser",
+#       "repo":   "somerepo",
+#       "type":   "repo",
+#       "branch": "main"
+#     }
+#
+# Usage:
+#   ./updatepkgs [root-dir]
+#
+# Env vars:
+#   GITHUB_TOKEN   optional, used to raise GitHub API rate limits
+#   FORCE=1        regenerate src even if it looks up to date
+
+set -euo pipefail
+
+ROOT_DIR="${1:-.}"
+
+for cmd in jq curl nix-prefetch-url unzip; do
+  if ! command -v "$cmd" >/dev/null 2>&1; then
+    echo "error: required command '$cmd' not found in PATH" >&2
+    exit 1
+  fi
+done
+
+CURL_AUTH_ARGS=()
+if [[ -n "${GITHUB_TOKEN:-}" ]]; then
+  CURL_AUTH_ARGS=(-H "Authorization: Bearer ${GITHUB_TOKEN}")
+fi
+
+github_api() {
+  local url="$1"
+  curl -fsSL "${CURL_AUTH_ARGS[@]}" -H "Accept: application/vnd.github+json" "$url"
+}
+
+nix32_to_sri() {
+  local nix32_hash="$1"
+  local sri_hash
+  sri_hash="$(nix hash to-sri --type sha256 "$nix32_hash" 2>/dev/null || true)"
+  if [[ -z "$sri_hash" ]]; then
+    sri_hash="$(nix-hash --type sha256 --to-sri "$nix32_hash" 2>/dev/null || echo "$nix32_hash")"
+  fi
+  echo "$sri_hash"
+}
+
+# Flat file hash via nix-prefetch-url (used for "artifact"/fetchurl sources).
+flat_prefetch_hash() {
+  local url="$1"
+  local nix32_hash
+  nix32_hash="$(nix-prefetch-url "$url" 2>/dev/null | tail -1)"
+  if [[ -z "$nix32_hash" ]]; then
+    return 1
+  fi
+  nix32_to_sri "$nix32_hash"
+}
+
+# Hash a zip source the way fetchzip would: download, unzip, strip a
+# singleton root directory (fetchzip's default stripRoot behavior), then
+# NAR-hash the resulting tree. Done locally rather than via
+# `nix-prefetch-url --unpack`, since that command's sandbox often lacks
+# `unzip` and silently fails on .zip archives.
+zip_prefetch_hash() {
+  local url="$1"
+  local tmpdir
+  tmpdir="$(mktemp -d)"
+  trap 'rm -rf "$tmpdir"' RETURN
+
+  if ! curl -fsSL "$url" -o "$tmpdir/src.zip"; then
+    return 1
+  fi
+
+  mkdir "$tmpdir/unpacked"
+  if ! unzip -q "$tmpdir/src.zip" -d "$tmpdir/unpacked"; then
+    return 1
+  fi
+
+  local root
+  local -a entries=("$tmpdir"/unpacked/*)
+  if [[ "${#entries[@]}" -eq 1 && -d "${entries[0]}" ]]; then
+    root="${entries[0]}"
+  else
+    root="$tmpdir/unpacked"
+  fi
+
+  local hash_out
+  if hash_out="$(nix hash path --type sha256 "$root" 2>/dev/null)"; then
+    :
+  else
+    local nix32_hash
+    nix32_hash="$(nix-hash --type sha256 --base32 "$root" 2>/dev/null)"
+    [[ -z "$nix32_hash" ]] && return 1
+    hash_out="$(nix32_to_sri "$nix32_hash")"
+  fi
+
+  echo "$hash_out"
+}
+
+process_file() {
+  local json_file="$1"
+  local dir
+  dir="$(dirname "$json_file")"
+  local src_nix="$dir/src"
+
+  echo "==> Processing $json_file"
+
+  local owner repo type artifact branch
+  owner="$(jq -r '.owner // empty' "$json_file")"
+  repo="$(jq -r '.repo // empty' "$json_file")"
+  type="$(jq -r '.type // empty' "$json_file")"
+  artifact="$(jq -r '.artifact // empty' "$json_file")"
+  branch="$(jq -r '.branch // empty' "$json_file")"
+
+  if [[ -z "$owner" || -z "$repo" ]]; then
+    echo "    skip: missing 'owner' or 'repo' in $json_file" >&2
+    return
+  fi
+
+  case "$type" in
+    zip) ;;
+    repo) ;;
+    artifact)
+      if [[ -z "$artifact" ]]; then
+        echo "    skip: type is 'artifact' but 'artifact' field is missing in $json_file" >&2
+        return
+      fi
+      ;;
+    *)
+      echo "    skip: unknown or missing 'type' (expected 'zip', 'artifact', or 'repo') in $json_file" >&2
+      return
+      ;;
+  esac
+
+  local url pin
+  if [[ "$type" == "repo" ]]; then
+    if [[ -z "$branch" ]]; then
+      branch="$(github_api "https://api.github.com/repos/$owner/$repo" | jq -r '.default_branch')"
+      echo "    no branch specified, using default branch: $branch"
+    fi
+
+    echo "    resolving latest commit on $owner/$repo@$branch"
+    local commit
+    commit="$(github_api "https://api.github.com/repos/$owner/$repo/commits/$branch" | jq -r '.sha // empty')"
+    if [[ -z "$commit" ]]; then
+      echo "    error: could not resolve commit for $owner/$repo@$branch" >&2
+      return 1
+    fi
+    echo "    commit: $commit"
+
+    pin="$commit"
+    url="https://github.com/$owner/$repo/archive/$commit.zip"
+  else
+    echo "    fetching latest release for $owner/$repo"
+    local release_json tag
+    release_json="$(github_api "https://api.github.com/repos/$owner/$repo/releases/latest")"
+    tag="$(jq -r '.tag_name // empty' <<<"$release_json")"
+
+    if [[ -z "$tag" ]]; then
+      echo "    error: could not resolve latest release tag for $owner/$repo" >&2
+      return 1
+    fi
+    echo "    release tag: $tag"
+    pin="$tag"
+
+    if [[ "$type" == "zip" ]]; then
+      url="https://github.com/$owner/$repo/archive/refs/tags/$tag.zip"
+    else
+      url="$(jq -r --arg name "$artifact" '.assets[] | select(.name == $name) | .browser_download_url' <<<"$release_json")"
+      if [[ -z "$url" ]]; then
+        echo "    error: no asset named '$artifact' found in release $tag" >&2
+        return 1
+      fi
+    fi
+  fi
+  echo "    source url: $url"
+
+  if [[ "${FORCE:-0}" != "1" && -f "$src_nix" ]] && grep -q "$pin" "$src_nix" 2>/dev/null; then
+    echo "    up to date, skipping prefetch"
+    return
+  fi
+
+  echo "    prefetching to compute hash"
+  local sri_hash
+  if [[ "$type" == "zip" || "$type" == "repo" ]]; then
+    if ! sri_hash="$(zip_prefetch_hash "$url")"; then
+      echo "    error: failed to fetch/hash zip at $url" >&2
+      return 1
+    fi
+  else
+    if ! sri_hash="$(flat_prefetch_hash "$url")"; then
+      echo "    error: nix-prefetch-url failed for $url" >&2
+      return 1
+    fi
+  fi
+  echo "    hash: $sri_hash"
+
+  cat > "$src_nix" <<EOF
+# GENERATED by updatepkgs — do not edit by hand.
+# Source: $json_file
+{
+  url = "$url";
+  hash = "$sri_hash";
+}
+EOF
+
+  echo "    wrote $src_nix"
+}
+
+mapfile -d '' json_files < <(find "$ROOT_DIR" -type f -name 'nixpkg.json' -print0)
+
+if [[ "${#json_files[@]}" -eq 0 ]]; then
+  echo "no nixpkg.json files found under $ROOT_DIR"
+  exit 0
+fi
+
+for f in "${json_files[@]}"; do
+  process_file "$f"
+done
