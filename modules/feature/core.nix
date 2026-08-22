@@ -30,6 +30,8 @@
                 wl-clipboard
                 jq
                 curl
+                screen
+                btop
             ];
         };
     };
