@@ -33,6 +33,11 @@
                 fsType = "vfat";
             };
 
+            fileSystems."/mnt/storage" =
+            { device = "/dev/disk/by-uuid/b99c7b8b-2428-40d6-afad-4c2efb0354d9";
+                fsType = "btrfs";
+            };
+
             swapDevices = [ ];
 
             networking.useDHCP = lib.mkDefault true;

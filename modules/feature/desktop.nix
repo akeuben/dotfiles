@@ -9,6 +9,7 @@
             kdeconnect
             pipewire
             vesktop
+            zen
         ];
 
         nixos = {pkgs, ...}: {
