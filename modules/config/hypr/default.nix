@@ -15,7 +15,7 @@
             ];
         };
 
-        provides.to-users.homeManager = {lib, ...}: {
+        provides.to-users.homeManager = {lib, host, ...}: {
             wayland.windowManager.hyprland = {
                 enable = true;
                 configType = "lua";
@@ -95,6 +95,15 @@
                             };
                         };
                     };
+                    monitor = (map (m: 
+                        {_args = [
+                            (lib.generators.mkLuaInline "{ output = \"${m.name}\", mode = \"${m.resolution or "preferred"}\", position = \"${m.position or "auto"}\", scale = \"${toString (m.scale or 1.0)}\"}")
+                        ];}
+                    ) (host.monitors or [])) ++ [
+                        {_args = [
+                            (lib.generators.mkLuaInline "{ output = \"\", mode = \"preferred\", position = \"auto\", scale = \"1\"}")
+                        ];}
+                    ];
                     gesture = [
                         {_args = [
                             (lib.generators.mkLuaInline "{fingers = 3, direction = \"horizontal\", action = \"workspace\"}")

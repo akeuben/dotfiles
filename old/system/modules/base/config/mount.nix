@@ -1,3 +1,0 @@
-{ ... }: {
-    services.automount.enable = true;
-}

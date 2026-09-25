@@ -8,7 +8,6 @@
 
                 blender
                 krita
-                mysql-workbench
 
                 ardour
                 yabridge
@@ -16,7 +15,7 @@
                 calf
 
                 vscode
-                jetbrains.idea-oss
+                jetbrains.idea
 
                 cmake
                 wget 

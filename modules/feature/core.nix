@@ -11,6 +11,7 @@
             git
             gnupg
             gvfs
+            linux
             keyring
             network
             nh
