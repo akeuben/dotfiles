@@ -23,6 +23,7 @@
 			runtimePkgs = with pkgs; [
 				nixd
 				alejandra
+                zls_0_15
 				ripgrep
 			];
 		};

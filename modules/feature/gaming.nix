@@ -2,10 +2,9 @@
     den.aspects.feature.gaming = {
         includes = with den.aspects; [
             emulation
-	    ship
+            ship
             steam
             minecraft
-            nsusbloader
         ];
     };
 }
