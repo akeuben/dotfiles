@@ -17,6 +17,11 @@
                 sessionPackages = [ plasma-bigscreen-wrapped ];
             };
 
+            environment.etc."xdg/applications-blacklistrc".text = ''
+                [Applications]
+                blacklist[$i]=waydroid.com.android.calculator2,waydroid.com.android.camera2,waydroid.com.android.contacts,waydroid.com.android.deskclock,waydroid.com.android.documentsui,waydroid.com.android.gallery3d,waydroid.com.android.inputmethod.latin,waydroid.com.android.settings,waydroid.org.lineageos.eleven,waydroid.org.lineageos.etar,waydroid.org.lineageos.jelly,waydroid.org.lineageos.recorder,org.kde.drkonqi.coredump.gui,org.kde.kdeconnect.app,org.kde.kdeconnect.sms,plasma-bigscreen-swap-session,org.kde.konsole,org.kde.kmenuedit,org.kde.plasma.emojier,org.kde.kinfocenter,org.kde.kwalletmanager,cups,nixos-manual,org.kde.qrca,org.kde.plasma-systemmonitor,systemsettings,org.kde.plasma.bigscreen.uvcviewer,xterm
+            '';
+
             xdg.portal.configPackages = [ plasma-bigscreen ];
 
             environment.systemPackages = [ plasma-bigscreen ];

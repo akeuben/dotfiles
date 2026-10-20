@@ -9,6 +9,7 @@
         nixos = {
             users.users.htpc = {
                 hashedPassword = "";
+                extraGroups = [ "cec" "dialout" ];
             };
         };
     };

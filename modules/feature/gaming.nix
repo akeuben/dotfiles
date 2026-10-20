@@ -5,6 +5,8 @@
             ship
             steam
             minecraft
+            nsusbloader
+            xpadneo
         ];
     };
 }

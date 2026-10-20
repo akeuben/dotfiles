@@ -7,6 +7,8 @@
                 package = pkgs.kodi.withPackages (p: config.aspects.kodi.plugins);
             };
 
+            services.udev.packages = [ pkgs.libcec ];
+
             aspects.kodi = {
                 enable = true;
                 plugins = with pkgs.kodiPackages; with self.packages.${pkgs.stdenv.hostPlatform.system}; [
