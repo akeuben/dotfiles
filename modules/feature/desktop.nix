@@ -12,7 +12,7 @@
             zen
         ];
 
-        nixos = {pkgs, ...}: {
+        nixos = {pkgs, config, ...}: {
             environment.systemPackages = with pkgs; [
                 nautilus
                 mpv
@@ -30,6 +30,10 @@
                 pavucontrol
                 faudio
                 zenity
+            ];
+            services.displayManager.enable = true;
+            environment.sessionVariables.XDG_DATA_DIRS = [
+                "${config.services.displayManager.sessionData.desktops}/share"
             ];
         };
     };

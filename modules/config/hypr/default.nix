@@ -162,7 +162,7 @@
                                 "${mod} + SHIFT + ${toString i}" 
                                 (window.move ws true)
                             ];}
-                        ]) 9)
+                        ]) 10)
                     );
                     on = {
                         _args = [

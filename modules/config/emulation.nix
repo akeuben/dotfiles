@@ -8,6 +8,7 @@
                 dolphin-emu
                 cemu
             ];
+            programs.ns-usbloader.enable = true;
         };
     };
 }

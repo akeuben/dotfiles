@@ -4,6 +4,7 @@
             hardware.enterprise
 
             openrgb
+            vr
 
             feature.core
             feature.desktop

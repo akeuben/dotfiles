@@ -27,6 +27,7 @@
 
         nixos = {pkgs, ...}: {
             environment.systemPackages = with pkgs; [
+                rsync
                 git
                 wl-clipboard
                 jq

@@ -6,6 +6,9 @@
                 steamtinkerlaunch
             ];
 
+            boot.kernelParams = [ "cfg80211.ieee80211_regdom=US" ];
+            hardware.wirelessRegulatoryDatabase = true;
+
             programs.steam = {
                 enable = true;
                 remotePlay.openFirewall = true;

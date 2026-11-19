@@ -1,6 +1,7 @@
 {
     den.aspects.git = {
-        provides.to-users.homeManager = {user, lib, ...}: {
+        provides.to-users.homeManager = {pkgs, user, lib, ...}: {
+
             programs.git = {
                 enable = true;
                 settings = lib.mkIf (user ? realName && user ? email) {

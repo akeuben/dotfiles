@@ -6,5 +6,12 @@
                 pinentryPackage = pkgs.pinentry-curses;
             };
         };
+        provides.to-users.homeManager = {config, ...}: {
+            home.sessionVariables.GNUPGHOME = "${config.xdg.dataHome}/gnupg";
+
+            programs.fish.shellInit = ''
+                set -gx GNUPGHOME "${config.xdg.dataHome}/gnupg"
+            '';
+        };
     };
 }

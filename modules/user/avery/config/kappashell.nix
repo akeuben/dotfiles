@@ -2,6 +2,7 @@
     den.aspects.avery = {
         homeManager = {
             xdg.configFile."kappashell/config.yaml" = {
+                enable = false;
                 text = ''
 # Kappashell Example configuration file
 # Remove this line to remove the warning!
