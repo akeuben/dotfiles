@@ -9,6 +9,7 @@
         nixos = {
             users.users.avery = {
                 initialPassword = "changeme";
+                extraGroups = [ "greeter" ];
             };
         };
 

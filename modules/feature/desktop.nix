@@ -10,6 +10,7 @@
             pipewire
             vesktop
             zen
+            kappagreet
         ];
 
         nixos = {pkgs, config, ...}: {
